@@ -10,33 +10,181 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FRS LOG — ย้ายไปใช้ V2 แล้ว</title>
 <meta name="description" content="FRS LOG ย้ายไประบบใหม่ V2 ที่ frslog.iamtod.com">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#dc2626">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#0b1220;--card:#111827;--line:#1f2937;--ink:#e5e7eb;--dim:#9ca3af;--red:#dc2626;--red2:#ef4444;--amber:#fbbf24}
+  /* ธีมสว่าง (พี่โตส: "มืด") — หัวแดงเต็มแถบ เนื้อหาพื้นขาว */
+  :root{--bg:#f4f6fa;--card:#fff;--line:#e5e7eb;--ink:#1f2937;--dim:#6b7280;--red:#dc2626;--red2:#b91c1c}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Sarabun,system-ui,sans-serif;line-height:1.65;font-size:16px}
-  a{color:#93c5fd}
+  a{color:#1d4ed8}
   .wrap{max-width:880px;margin:0 auto;padding:0 1.1rem}
 
   /* ---------- หัว ---------- */
-  .hero{background:radial-gradient(1200px 400px at 50% -120px,#7f1d1d 0%,transparent 70%),var(--bg);
-        padding:2.6rem 0 2rem;text-align:center;border-bottom:1px solid var(--line)}
+  .hero{background:linear-gradient(135deg,#ef4444 0%,#dc2626 45%,#991b1b 100%);color:#fff;
+        padding:2.6rem 0 2.3rem;text-align:center;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;inset:auto -10% -60px -10%;height:120px;background:var(--bg);
+               border-radius:50% 50% 0 0}
+  .hero .wrap{position:relative;z-index:1}
   .logo{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.15rem;letter-spacing:.3px}
-  .logo b{color:var(--red2)}
-  .tag{display:inline-block;margin-top:1.1rem;padding:.2rem .75rem;border-radius:999px;background:#422006;
-       border:1px solid #a16207;color:#fde68a;font-size:.85rem}
+  .tag{display:inline-block;margin-top:1.1rem;padding:.2rem .8rem;border-radius:999px;background:#fff3;
+       border:1px solid #fff6;color:#fff;font-size:.85rem}
   h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.25;margin:.8rem 0 .4rem}
-  .sub{color:var(--dim);margin:0 auto 1.6rem;max-width:36rem}
-  .go{display:inline-flex;align-items:center;gap:.6rem;background:var(--red);color:#fff;text-decoration:none;
-      font-weight:700;font-size:1.2rem;padding:.95rem 1.8rem;border-radius:14px;box-shadow:0 10px 30px #dc262655;
-      transition:transform .15s,background .15s}
-  .go:hover{background:var(--red2);transform:translateY(-2px)}
-  .url{margin-top:.8rem;font-size:1.05rem;color:#fca5a5;font-weight:600;word-break:break-all}
-  .count{margin-top:.9rem;color:var(--dim);font-size:.9rem;min-height:1.4em}
-  .count button{background:none;border:1px solid #374151;color:var(--dim);border-radius:8px;padding:.1rem .6rem;
+  .sub{color:#fee2e2;margin:0 auto 1.6rem;max-width:36rem}
+  .go{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--red);text-decoration:none;
+      font-weight:700;font-size:1.2rem;padding:.95rem 1.9rem;border-radius:14px;box-shadow:0 12px 30px #7f1d1d55;
+      transition:transform .15s}
+  .go:hover{transform:translateY(-2px)}
+  .url{margin-top:.8rem;font-size:1.05rem;color:#fff;font-weight:600;word-break:break-all}
+  .count{margin-top:.7rem;color:#fee2e2;font-size:.9rem;min-height:1.4em;margin-bottom:1.4rem}
+  .count button{background:#fff2;border:1px solid #fff6;color:#fff;border-radius:8px;padding:.1rem .6rem;
                 font:inherit;cursor:pointer;margin-left:.3rem}
 
   /* ---------- ส่วน ---------- */
+  section{padding:2rem 0}
+  h2{font-size:1.35rem;margin:0 0 1.1rem;display:flex;align-items:center;gap:.5rem;color:#111827}
+  h2 small{font-weight:400;color:var(--dim);font-size:.9rem}
+  .grid{display:grid;gap:.85rem;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+  .f{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem;
+     box-shadow:0 2px 8px #0000000a;border-top:3px solid var(--red)}
+  .f .i{font-size:1.5rem;line-height:1}
+  .f h3{margin:.45rem 0 .25rem;font-size:1.02rem;color:#111827}
+  .f p{margin:0;color:var(--dim);font-size:.92rem}
+
+  ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:.7rem}
+  ol.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;
+              padding:.9rem 1rem .9rem 3.4rem;position:relative;box-shadow:0 2px 8px #0000000a}
+  ol.steps li::before{content:counter(s);position:absolute;left:.95rem;top:.85rem;width:1.8rem;height:1.8rem;
+              border-radius:50%;background:var(--red);color:#fff;font-weight:700;display:grid;place-items:center}
+  ol.steps b{color:#111827}
+  .note{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:12px;padding:.75rem .95rem;margin-top:1rem;font-size:.93rem}
+
+  .tbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px #0000000a}
+  table{width:100%;border-collapse:collapse;font-size:.93rem}
+  th,td{text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  th{background:#fef2f2;color:#991b1b;font-weight:600}
+  td:first-child{white-space:nowrap;font-weight:600;color:#111827}
+
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.2rem 1rem;margin-bottom:.6rem}
+  summary{cursor:pointer;padding:.6rem 0;font-weight:600;color:#111827}
+  details p{margin:.1rem 0 .8rem;color:var(--dim)}
+
+  footer{text-align:center;color:var(--dim);font-size:.85rem;padding:1.4rem 0 2.4rem;border-top:1px solid var(--line)}
+  footer a{color:var(--dim)}
+  kbd{background:#f3f4f6;border:1px solid #d1d5db;border-radius:6px;padding:0 .35rem;font-family:inherit;font-size:.88em}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="logo">🚒 <span>FRS LOG</span></div><br>
+    <span class="tag">📢 ระบบเดิม (V1) ปิดใช้งานแล้ว</span>
+    <h1>ย้ายไปใช้ FRS LOG V2 แล้ว</h1>
+    <p class="sub">ระบบบันทึกการปฏิบัติงาน สถานีดับเพลิงและกู้ภัยทุ่งครุ ย้ายมาอยู่ที่เว็บใหม่
+      เร็วขึ้น ใช้บนมือถือสะดวกขึ้น และมีรายงานให้ดูมากขึ้น</p>
+    <a class="go" id="go" href="https://frslog.iamtod.com/tungkhru/">เข้าใช้งาน V2 →</a>
+    <div class="url">frslog.iamtod.com/tungkhru/</div>
+    <div class="count" id="count"></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="new">
+    <h2>✨ มีอะไรใหม่ <small>เทียบกับ V1</small></h2>
+    <div class="grid">
+      <div class="f"><div class="i">📱</div><h3>กรอกบนมือถือสบายขึ้น</h3>
+        <p>ช่องรายละเอียด/สถานที่ยืดตามข้อความ เห็นครบ · แถบหัวหลบตอนพิมพ์ · คีย์บอร์ดไม่บังช่อง</p></div>
+      <div class="f"><div class="i">🔁</div><h3>ออกครั้งเดียว หลายเหตุ</h3>
+        <p>ทริปเดียวไปต่อได้หลายเหตุ (เช่น 501 แล้วไป 201) แต่ละเหตุมีเวลา สถานที่ รายละเอียดของตัวเอง นับสถิติแยกกัน</p></div>
+      <div class="f"><div class="i">⚡</div><h3>ข้อความด่วน</h3>
+        <p>ปุ่มวางรูปแบบรายละเอียด/สถานที่ที่ใช้บ่อย แล้วกด “ช่องว่างถัดไป ›” เติมเฉพาะตัวเลข</p></div>
+      <div class="f"><div class="i">📋</div><h3>ว.8 คัดลอก + รูปแชร์</h3>
+        <p>กดคัดลอกข้อความ ว.8 ได้ทันที · สร้างรูปสรุปเหตุไว้ส่งไลน์กลุ่ม</p></div>
+      <div class="f"><div class="i">📊</div><h3>รายงานและกราฟ</h3>
+        <p>สรุปรายชุด/รายบุคคล · กราฟเส้น 501 กับ 20x · โดนัทแยกภารกิจ · เกร็ดสถิติ</p></div>
+      <div class="f"><div class="i">📄</div><h3>สรุปส่งหน่วยงาน (PDF A4)</h3>
+        <p>เลือกช่วงวันและภารกิจ ได้ตารางเหตุ ที่ไหนบ่อย เวลาเดินทาง ระยะทาง พร้อมพิมพ์</p></div>
+      <div class="f"><div class="i">🚗</div><h3>ตามเลขไมล์รถ + แบบ 3/4</h3>
+        <p>เติมไมล์ออกให้เอง · เจอไมล์ขาดช่วงจะแจ้ง · รองรับรถไมล์เสีย / รถส่วนตัวไม่ต้องกรอกไมล์ · พิมพ์แบบ 3/4 ได้</p></div>
+      <div class="f"><div class="i">🌙</div><h3>เที่ยวข้ามคืน</h3>
+        <p>ถ้ากลับถึงสถานีหลังเที่ยงคืน ระบบบอกวันออก/วันกลับให้เห็นก่อนกดบันทึก</p></div>
+      <div class="f"><div class="i">🔐</div><h3>ปลอดภัยขึ้น</h3>
+        <p>ล็อกอินครั้งเดียวจำไว้ 3 เดือน · แก้/ลบเหตุและเมนูตั้งค่าต้องใส่ PIN · มีระบบสำรองข้อมูล</p></div>
+    </div>
+  </section>
+
+  <section id="start">
+    <h2>🚀 เริ่มใช้งานครั้งแรก</h2>
+    <ol class="steps">
+      <li>เปิด <b>frslog.iamtod.com/tungkhru/</b> หรือ <b>สแกน QR</b> จากใบประจำสถานี</li>
+      <li>กรอก <b>ชื่อผู้ใช้ / รหัสผ่าน</b> ของสถานี (ดูจากใบประจำสถานี หรือถามหัวหน้าเวร) — กรอกครั้งเดียว เครื่องจำไว้ 3 เดือน</li>
+      <li>แนะนำ <b>เพิ่มไว้ที่หน้าจอหลัก</b>: Chrome กด <kbd>⋮</kbd> → “เพิ่มลงในหน้าจอหลัก” · iPhone กด <kbd>แชร์</kbd> → “เพิ่มไปยังหน้าจอโฮม”</li>
+    </ol>
+    <div class="note">⚠️ ลิงก์ต้องมี <b>/</b> ท้าย <b>/tungkhru/</b> — ถ้าเคยบันทึกลิงก์ไว้แบบไม่มี / ระบบจะพาไปหน้าที่ถูกให้เอง</div>
+  </section>
+
+  <section id="how">
+    <h2>📝 คู่มือย่อ</h2>
+    <div class="tbl"><table>
+      <tr><th>อยากทำ</th><th>ทำยังไง</th></tr>
+      <tr><td>บันทึกเหตุ</td><td>เมนู <b>✏️ บันทึก</b> → วันที่ · ภารกิจ · เวลา · รายละเอียด · สถานที่ → เลือกรถ + เจ้าหน้าที่ (ไมล์ออกขึ้นให้เอง ใส่แค่ไมล์กลับ) → บันทึก</td></tr>
+      <tr><td>ไปต่อหลายเหตุ</td><td>ในหน้าบันทึก กด <b>➕ เพิ่มเหตุที่ 2</b> แล้วกรอกต่อ (เพิ่มได้หลายเหตุ)</td></tr>
+      <tr><td>เที่ยวข้ามคืน</td><td>ช่องวันที่ใส่ <b>วันที่กลับถึงสถานี</b> (ขึ้นเป็นวันนี้ให้อยู่แล้ว) ระบบคิดวันออกให้เอง ดูกล่อง 🌙 ยืนยัน</td></tr>
+      <tr><td>คัดลอก ว.8</td><td>เมนู <b>ว.8</b> → หาเหตุ → กดปุ่ม <b>📋</b> คัดลอกข้อความ หรือ <b>🖼️</b> สร้างรูปแชร์</td></tr>
+      <tr><td>ค้นหา / แก้ไข / ลบ</td><td>เมนู <b>☰ ประวัติ</b> → ค้นหาด้วยเลขเหตุ สถานที่ ชื่อ รถ → ✏️ แก้ไข หรือ 🗑️ ลบ (ใส่ PIN)</td></tr>
+      <tr><td>แก้เลขไมล์</td><td>เมนูประวัติ → แท็บ <b>ตามรถ</b> → แก้ไมล์ของเที่ยวนั้น · แถว “⚠️ ไม่มีบันทึก” = ไมล์ขาดช่วง กดกรอกได้</td></tr>
+      <tr><td>รายงาน / แบบ 3-4</td><td>เมนู <b>📊 รายงาน</b> → เลือกช่วงเวลา → สรุป · กราฟ · แบบ 3/แบบ 4 · สรุปส่งหน่วยงาน (PDF)</td></tr>
+      <tr><td>ตั้งค่า</td><td>เมนู <b>⚙️ ตั้งค่า</b> (ใส่ PIN) → เจ้าหน้าที่ · รถ · ภารกิจ · ข้อความด่วน · สถานี</td></tr>
+    </table></div>
+  </section>
+
+  <section id="faq">
+    <h2>❓ คำถามที่พบบ่อย</h2>
+    <details><summary>ข้อมูลเก่าใน V1 หายไหม</summary>
+      <p>ไม่หาย — ย้ายเหตุทั้งหมดของ V1 (ตั้งแต่ 1 ต.ค. 2568) เข้า V2 แล้ว เลขเหตุต่อจากเดิม ค้นในเมนูประวัติได้เลย</p></details>
+    <details><summary>ยังบันทึกใน V1 ได้อยู่ไหม</summary>
+      <p>ไม่ได้แล้ว — กรุณาบันทึกใน V2 เท่านั้น ข้อมูลจะได้อยู่ที่เดียวและรายงานถูกต้อง</p></details>
+    <details><summary>เปิดแล้วขึ้นหน้าเข้าสู่ระบบอีก</summary>
+      <p>ครบ 3 เดือน หรือล้างข้อมูลเบราว์เซอร์ ระบบจะถามรหัสใหม่ 1 ครั้ง — กรอกแล้วใช้ต่อได้ตามปกติ</p></details>
+    <details><summary>ขึ้นกล่องแดง “เกิดข้อผิดพลาด”</summary>
+      <p>ลองรีเฟรชหน้า 1 ครั้ง ถ้ายังขึ้นอยู่แจ้งผู้ดูแล — ระบบบันทึกปัญหาไว้ให้ผู้ดูแลตรวจได้แล้ว</p></details>
+    <details><summary>ลืม PIN / ไม่มีรหัส</summary>
+      <p>ติดต่อหัวหน้าเวรหรือผู้ดูแลระบบของสถานี</p></details>
+  </section>
+
+</main>
+
+<footer>
+  FRS LOG V2 · สถานีดับเพลิงและกู้ภัยทุ่งครุ<br>
+  <a href="https://frslog.iamtod.com/">frslog.iamtod.com</a>
+</footer>
+
+<script>
+  // พาไป V2 เองใน 15 วินาที — แตะ/เลื่อนหน้าเมื่อไหร่ถือว่ากำลังอ่าน หยุดนับ
+  (function () {
+    var n = 15, el = document.getElementById('count'), go = document.getElementById('go').href, t;
+    function stop() {
+      clearInterval(t);
+      el.innerHTML = '';
+      ['scroll', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) { window.removeEventListener(e, stop); });
+    }
+    function tick() {
+      if (n <= 0) { stop(); location.href = go; return; }
+      el.innerHTML = 'จะพาไป V2 ใน ' + n + ' วินาที <button type="button" id="stay">อยู่หน้านี้</button>';
+      document.getElementById('stay').onclick = stop;
+      n--;
+    }
+    tick();
+    t = setInterval(tick, 1000);
+    ['scroll', 'touchstart', 'keydown', 'mousedown'].forEach(function (e) {
+      window.addEventListener(e, stop, { passive: true, once: true });
+    });
+  })();
+</script>
+</body>
+</html>
