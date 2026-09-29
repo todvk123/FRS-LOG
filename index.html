@@ -1,12 +1,42 @@
 <!DOCTYPE html>
-
-<html>
-   <head>
+<!--
+  FRS LOG — หน้าแจ้งย้ายจาก V1 ไป V2
+  วางแทน index.html ของ https://todvk123.github.io/FRS-LOG/ (เดิมเป็น iframe ครอบ Apps Script V1)
+  พี่โตสขอ 29 ก.ย. 2569 · ไฟล์เดียวจบ ไม่ต้องใช้ไฟล์อื่น · ไม่มีรหัส/ชื่อผู้ใช้ในหน้านี้
+-->
+<html lang="th">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>FRS LOG — V19.6.1 (Stable)</title>
-      <base target="_top">
-   </head>
-   <body>
-      <iframe style="position: absolute;top: 0;left: 0;width: 100%;height: 100%;border: 0;" src="https://script.google.com/macros/s/AKfycbyqSIyvdZAwEdlm8IDrLt-ubjk0Qqggeqvi3Zvr20r2OZH5zKqP0ErJAbc3bLa9QPNz/exec"></iframe>
-   </body>
-</html>
+<title>FRS LOG — ย้ายไปใช้ V2 แล้ว</title>
+<meta name="description" content="FRS LOG ย้ายไประบบใหม่ V2 ที่ frslog.iamtod.com">
+<meta name="theme-color" content="#111827">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0b1220;--card:#111827;--line:#1f2937;--ink:#e5e7eb;--dim:#9ca3af;--red:#dc2626;--red2:#ef4444;--amber:#fbbf24}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Sarabun,system-ui,sans-serif;line-height:1.65;font-size:16px}
+  a{color:#93c5fd}
+  .wrap{max-width:880px;margin:0 auto;padding:0 1.1rem}
+
+  /* ---------- หัว ---------- */
+  .hero{background:radial-gradient(1200px 400px at 50% -120px,#7f1d1d 0%,transparent 70%),var(--bg);
+        padding:2.6rem 0 2rem;text-align:center;border-bottom:1px solid var(--line)}
+  .logo{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.15rem;letter-spacing:.3px}
+  .logo b{color:var(--red2)}
+  .tag{display:inline-block;margin-top:1.1rem;padding:.2rem .75rem;border-radius:999px;background:#422006;
+       border:1px solid #a16207;color:#fde68a;font-size:.85rem}
+  h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.25;margin:.8rem 0 .4rem}
+  .sub{color:var(--dim);margin:0 auto 1.6rem;max-width:36rem}
+  .go{display:inline-flex;align-items:center;gap:.6rem;background:var(--red);color:#fff;text-decoration:none;
+      font-weight:700;font-size:1.2rem;padding:.95rem 1.8rem;border-radius:14px;box-shadow:0 10px 30px #dc262655;
+      transition:transform .15s,background .15s}
+  .go:hover{background:var(--red2);transform:translateY(-2px)}
+  .url{margin-top:.8rem;font-size:1.05rem;color:#fca5a5;font-weight:600;word-break:break-all}
+  .count{margin-top:.9rem;color:var(--dim);font-size:.9rem;min-height:1.4em}
+  .count button{background:none;border:1px solid #374151;color:var(--dim);border-radius:8px;padding:.1rem .6rem;
+                font:inherit;cursor:pointer;margin-left:.3rem}
+
+  /* ---------- ส่วน ---------- */
