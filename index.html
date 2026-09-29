@@ -10,80 +10,76 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FRS LOG — ย้ายไปใช้ V2 แล้ว</title>
 <meta name="description" content="FRS LOG ย้ายไประบบใหม่ V2 ที่ frslog.iamtod.com">
-<meta name="theme-color" content="#dc2626">
+<meta name="theme-color" content="#111827">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ธีมสว่าง (พี่โตส: "มืด") — หัวแดงเต็มแถบ เนื้อหาพื้นขาว */
-  :root{--bg:#f4f6fa;--card:#fff;--line:#e5e7eb;--ink:#1f2937;--dim:#6b7280;--red:#dc2626;--red2:#b91c1c}
+  :root{--bg:#0b1220;--card:#111827;--line:#1f2937;--ink:#e5e7eb;--dim:#9ca3af;--red:#dc2626;--red2:#ef4444;--amber:#fbbf24}
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:Sarabun,system-ui,sans-serif;line-height:1.65;font-size:16px}
-  a{color:#1d4ed8}
+  a{color:#93c5fd}
   .wrap{max-width:880px;margin:0 auto;padding:0 1.1rem}
 
   /* ---------- หัว ---------- */
-  .hero{background:linear-gradient(135deg,#ef4444 0%,#dc2626 45%,#991b1b 100%);color:#fff;
-        padding:2.6rem 0 2.3rem;text-align:center;position:relative;overflow:hidden}
-  .hero::after{content:"";position:absolute;inset:auto -10% -60px -10%;height:120px;background:var(--bg);
-               border-radius:50% 50% 0 0}
-  .hero .wrap{position:relative;z-index:1}
+  .hero{background:radial-gradient(1200px 400px at 50% -120px,#7f1d1d 0%,transparent 70%),var(--bg);
+        padding:2.6rem 0 2rem;text-align:center;border-bottom:1px solid var(--line)}
   .logo{display:inline-flex;align-items:center;gap:.55rem;font-weight:700;font-size:1.15rem;letter-spacing:.3px}
-  .tag{display:inline-block;margin-top:1.1rem;padding:.2rem .8rem;border-radius:999px;background:#fff3;
-       border:1px solid #fff6;color:#fff;font-size:.85rem}
+  .logo b{color:var(--red2)}
+  .tag{display:inline-block;margin-top:1.1rem;padding:.2rem .75rem;border-radius:999px;background:#422006;
+       border:1px solid #a16207;color:#fde68a;font-size:.85rem}
   h1{font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.25;margin:.8rem 0 .4rem}
-  .sub{color:#fee2e2;margin:0 auto 1.6rem;max-width:36rem}
-  .go{display:inline-flex;align-items:center;gap:.6rem;background:#fff;color:var(--red);text-decoration:none;
-      font-weight:700;font-size:1.2rem;padding:.95rem 1.9rem;border-radius:14px;box-shadow:0 12px 30px #7f1d1d55;
-      transition:transform .15s}
-  .go:hover{transform:translateY(-2px)}
-  .url{margin-top:.8rem;font-size:1.05rem;color:#fff;font-weight:600;word-break:break-all}
-  .count{margin-top:.7rem;color:#fee2e2;font-size:.9rem;min-height:1.4em;margin-bottom:1.4rem}
-  .count button{background:#fff2;border:1px solid #fff6;color:#fff;border-radius:8px;padding:.1rem .6rem;
+  .sub{color:var(--dim);margin:0 auto 1.6rem;max-width:36rem}
+  .go{display:inline-flex;align-items:center;gap:.6rem;background:var(--red);color:#fff;text-decoration:none;
+      font-weight:700;font-size:1.2rem;padding:.95rem 1.8rem;border-radius:14px;box-shadow:0 10px 30px #dc262655;
+      transition:transform .15s,background .15s}
+  .go:hover{background:var(--red2);transform:translateY(-2px)}
+  .url{margin-top:.8rem;font-size:1.05rem;color:#fca5a5;font-weight:600;word-break:break-all}
+  .count{margin-top:.9rem;color:var(--dim);font-size:.9rem;min-height:1.4em}
+  .count button{background:none;border:1px solid #374151;color:var(--dim);border-radius:8px;padding:.1rem .6rem;
                 font:inherit;cursor:pointer;margin-left:.3rem}
 
   /* ---------- ส่วน ---------- */
-  section{padding:2rem 0}
-  h2{font-size:1.35rem;margin:0 0 1.1rem;display:flex;align-items:center;gap:.5rem;color:#111827}
+  section{padding:2.2rem 0;border-bottom:1px solid var(--line)}
+  h2{font-size:1.35rem;margin:0 0 1.1rem;display:flex;align-items:center;gap:.5rem}
   h2 small{font-weight:400;color:var(--dim);font-size:.9rem}
   .grid{display:grid;gap:.85rem;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
-  .f{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem;
-     box-shadow:0 2px 8px #0000000a;border-top:3px solid var(--red)}
+  .f{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem 1.05rem}
   .f .i{font-size:1.5rem;line-height:1}
-  .f h3{margin:.45rem 0 .25rem;font-size:1.02rem;color:#111827}
+  .f h3{margin:.45rem 0 .25rem;font-size:1.02rem}
   .f p{margin:0;color:var(--dim);font-size:.92rem}
 
   ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;gap:.7rem}
   ol.steps li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:14px;
-              padding:.9rem 1rem .9rem 3.4rem;position:relative;box-shadow:0 2px 8px #0000000a}
+              padding:.9rem 1rem .9rem 3.4rem;position:relative}
   ol.steps li::before{content:counter(s);position:absolute;left:.95rem;top:.85rem;width:1.8rem;height:1.8rem;
               border-radius:50%;background:var(--red);color:#fff;font-weight:700;display:grid;place-items:center}
-  ol.steps b{color:#111827}
-  .note{background:#fffbeb;border:1px solid #fcd34d;color:#92400e;border-radius:12px;padding:.75rem .95rem;margin-top:1rem;font-size:.93rem}
+  ol.steps b{color:#fff}
+  .note{background:#422006;border:1px solid #a16207;color:#fde68a;border-radius:12px;padding:.75rem .95rem;margin-top:1rem;font-size:.93rem}
 
-  .tbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px #0000000a}
+  .tbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
   table{width:100%;border-collapse:collapse;font-size:.93rem}
-  th,td{text-align:left;padding:.6rem .75rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th,td{text-align:left;padding:.55rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
   tr:last-child td{border-bottom:0}
-  th{background:#fef2f2;color:#991b1b;font-weight:600}
-  td:first-child{white-space:nowrap;font-weight:600;color:#111827}
+  th{color:var(--dim);font-weight:600}
+  td:first-child{white-space:nowrap}
 
   details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.2rem 1rem;margin-bottom:.6rem}
-  summary{cursor:pointer;padding:.6rem 0;font-weight:600;color:#111827}
+  summary{cursor:pointer;padding:.6rem 0;font-weight:600}
   details p{margin:.1rem 0 .8rem;color:var(--dim)}
 
-  footer{text-align:center;color:var(--dim);font-size:.85rem;padding:1.4rem 0 2.4rem;border-top:1px solid var(--line)}
-  footer a{color:var(--dim)}
-  kbd{background:#f3f4f6;border:1px solid #d1d5db;border-radius:6px;padding:0 .35rem;font-family:inherit;font-size:.88em}
+  footer{text-align:center;color:#6b7280;font-size:.85rem;padding:1.8rem 0 2.4rem}
+  footer a{color:#9ca3af}
+  kbd{background:#1f2937;border:1px solid #374151;border-radius:6px;padding:0 .35rem;font-family:inherit;font-size:.88em}
 </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="wrap">
-    <div class="logo">🚒 <span>FRS LOG</span></div><br>
+    <div class="logo">🚒 <span><b>FRS</b> LOG</span></div><br>
     <span class="tag">📢 ระบบเดิม (V1) ปิดใช้งานแล้ว</span>
-    <h1>ย้ายไปใช้ FRS LOG V2 แล้ว</h1>
+    <h1>ย้ายไปใช้ <span style="color:var(--red2)">FRS LOG V2</span> แล้ว</h1>
     <p class="sub">ระบบบันทึกการปฏิบัติงาน สถานีดับเพลิงและกู้ภัยทุ่งครุ ย้ายมาอยู่ที่เว็บใหม่
       เร็วขึ้น ใช้บนมือถือสะดวกขึ้น และมีรายงานให้ดูมากขึ้น</p>
     <a class="go" id="go" href="https://frslog.iamtod.com/tungkhru/">เข้าใช้งาน V2 →</a>
